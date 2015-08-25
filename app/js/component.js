@@ -1,29 +1,41 @@
 var Select = require('react-select');
 var React = require("react");
 
-var options = [
-    { value: 'one', label: 'One' },
-    { value: 'two', label: 'Two' }
-];
-
-function logChange(val) {
-    console.log("Selected: " + val);
-}
 
 
-
-var HelloComponent = React.createClass({
-  
+var AuthorsSelect = React.createClass({
   render: function() {
-    return (
-      <Select
-        name="form-field-name"
-        value="one"
-        options={options}
-        onChange={logChange}
-      />
+  return (
+        <div>
+          
+          <Select
+            name="authors"
+            options={this.props.authors}
+            onChange={this.props.onAuthorChange}
+          />
+        </div>
     );
   }
 });
+
+var BooksSelect = React.createClass({
+  
+  render: function() {
+    return (
+        <div>
+        <Select
+          name="books"
+          options={this.props.books}
+          onChange={this.props.onBookChange}
+        />
+        </div>
+    );
+  }
+});
+
+
+
 angular.module('myApp')
-  .value('HelloComponent', HelloComponent);
+  .value('AuthorsSelect', AuthorsSelect)
+  .value('BooksSelect', BooksSelect)
+  

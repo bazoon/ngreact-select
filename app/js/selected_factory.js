@@ -33,7 +33,9 @@
       randomSelect: randomSelect,
       getState: getState,
       hint: hint,
-      changeAuthorById: changeAuthorById
+      changeAuthorById: changeAuthorById,
+      changeBookById: changeBookById,
+      getCurrentBooks: getCurrentBooks
     };
 
     return service;
@@ -75,6 +77,10 @@
       state.author = _.find(state.authors, { id: authorId });
     }
 
+    function changeBookById (bookId) {
+      state.book = _.find(state.books, { id: bookId });
+    }
+
     function randomSelect () {
       var randomAuthor = state.authors[Math.floor(Math.random() * state.authors.length)];
       state.author = randomAuthor;
@@ -87,12 +93,13 @@
     }
 
     function hint () {
+      
 
       if ((state.author === undefined) && (state.book === undefined)) {
         return 'Выберите автора';
       }
 
-      if ((state.author != undefined) && (state.book === undefined)) {
+      if ((state.author != undefined) && !state.book) {
         return 'Выберите книгу';
       }
 

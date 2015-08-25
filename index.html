@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules/react-select/dist/default.css">
 
 	<title>Author & Books</title>
 
@@ -12,9 +13,17 @@
     <h2 class="alert alert-danger" ng-show="page.error" style="text-align: center">{{ page.error }}</h2>
     
     <div>
-      <react-component name="HelloComponent" props="person" watch-depth="reference"/>
+      <react-component name="AuthorsSelect" 
+        props = "page.authorsProps" />
     </div>
-  
+
+    <div>
+      <react-component name="BooksSelect" 
+        props = "page.booksProps" />
+
+    </div>
+    
+    
     <h2 class="alert alert-info" style="text-align: center">{{ page.hint(); }}</h2>
 
   
